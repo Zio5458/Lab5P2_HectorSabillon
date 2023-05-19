@@ -554,7 +554,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bElimMouseClicked
 
     private void hCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hCrearMouseClicked
-        
+        String nom = hNombre.getText();
+        String poder = hPoder.getText();
+        String debilidad = hDebilidad.getText();
+        String tipo = (String) hTipo.getSelectedItem();
+        Escuadron escuadron = escuadrones.get(Integer.parseInt(hAddIndex.getText()));
+        int fuerza = Integer.parseInt(hFuerza.getText());
+        int fisica = Integer.parseInt(hafis.getText());
+        int mental = Integer.parseInt(hamen.getText());
+        Heroe heroe = new Heroe(nom, poder, debilidad, escuadron, fuerza, fisica, mental, tipo);
     }//GEN-LAST:event_hCrearMouseClicked
 
     /**
