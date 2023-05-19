@@ -10,6 +10,8 @@ public class Escuadron {
     private String tipo;
     private ArrayList<Persona> miembros;
 
+    
+    
     public Escuadron(String nombre, String lugar, String tipo) {
         this.nombre = nombre;
         this.lugar = lugar;

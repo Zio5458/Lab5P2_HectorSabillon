@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,9 +13,8 @@
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+    ArrayList<Escuadron> escuadrones = new ArrayList();
+    
     public Main() {
         initComponents();
     }
@@ -35,14 +38,17 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         esLugar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        esCrear = new javax.swing.JButton();
         esTipo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         Modificar = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textMod = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         indexMod = new javax.swing.JTextField();
         Listar = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textListar = new javax.swing.JTextArea();
         Eliminar = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -65,7 +71,12 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo");
 
-        jButton1.setText("Crear");
+        esCrear.setText("Crear");
+        esCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                esCrearMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +97,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(esTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(esCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(589, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,7 +116,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(esTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(esCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(160, Short.MAX_VALUE))
         );
 
@@ -123,6 +134,8 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Agregar", Agregar);
+
+        Modificar.setBackground(new java.awt.Color(153, 153, 153));
 
         textMod.setColumns(20);
         textMod.setRows(5);
@@ -144,7 +157,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(105, 105, 105)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(indexMod, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(indexMod, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(193, 193, 193))
         );
         ModificarLayout.setVerticalGroup(
@@ -153,23 +166,50 @@ public class Main extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
-                .addGroup(ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(indexMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(indexMod))
                 .addContainerGap(214, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Modificar", Modificar);
 
+        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+
+        textListar.setColumns(20);
+        textListar.setRows(5);
+        jScrollPane2.setViewportView(textListar);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ListarLayout = new javax.swing.GroupLayout(Listar);
         Listar.setLayout(ListarLayout);
         ListarLayout.setHorizontalGroup(
             ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGroup(ListarLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         ListarLayout.setVerticalGroup(
             ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addGroup(ListarLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Listar", Listar);
@@ -231,6 +271,13 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void esCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_esCrearMouseClicked
+        String nom = esNombre.getText();
+        String lugar = esLugar.getText();
+        String tipo = esTipo.getText();
+        Escuadron escuadron = new Escuadron(nom, lugar, tipo);
+    }//GEN-LAST:event_esCrearMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -272,11 +319,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Escuadron;
     private javax.swing.JPanel Listar;
     private javax.swing.JPanel Modificar;
+    private javax.swing.JButton esCrear;
     private javax.swing.JTextField esLugar;
     private javax.swing.JTextField esNombre;
     private javax.swing.JTextField esTipo;
     private javax.swing.JTextField indexMod;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,9 +331,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextArea textListar;
     private javax.swing.JTextArea textMod;
     // End of variables declaration//GEN-END:variables
 }
