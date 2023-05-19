@@ -121,7 +121,7 @@ public class Main extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         areaModH1 = new javax.swing.JTextArea();
-        heroeMod1 = new javax.swing.JButton();
+        villanoMod1 = new javax.swing.JButton();
         IndexModH1 = new javax.swing.JTextField();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
@@ -812,10 +812,10 @@ public class Main extends javax.swing.JFrame {
         areaModH1.setRows(5);
         jScrollPane9.setViewportView(areaModH1);
 
-        heroeMod1.setText("Modificar");
-        heroeMod1.addMouseListener(new java.awt.event.MouseAdapter() {
+        villanoMod1.setText("Modificar");
+        villanoMod1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                heroeMod1MouseClicked(evt);
+                villanoMod1MouseClicked(evt);
             }
         });
 
@@ -831,7 +831,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(heroeMod1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(villanoMod1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(IndexModH1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126))
@@ -843,7 +843,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(heroeMod1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(villanoMod1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(IndexModH1))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
@@ -1000,6 +1000,7 @@ public class Main extends javax.swing.JFrame {
         textMod.setText(listarEscuadron());
         textElim.setText(listarEscuadron());
         hAgregarEs.setText(listarEscuadron());
+        hAgregarEs1.setText(listarEscuadron());
     }//GEN-LAST:event_esCrearMouseClicked
 
     private void bModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModMouseClicked
@@ -1068,29 +1069,55 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_botonElimHMouseClicked
 
     private void vCrear1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vCrear1MouseClicked
-        String nom = hNombre.getText();
-            String poder = hPoder.getText();
-            String debilidad = hDebilidad.getText();
-            String tipo = (String) hTipo.getSelectedItem();
-            Escuadron escuadron = escuadrones.get(Integer.parseInt(hAddIndex.getText()));
-            int fuerza = Integer.parseInt(hFuerza.getText());
-            int fisica = Integer.parseInt(hafis.getText());
-            int mental = Integer.parseInt(hamen.getText());
+        String nom = hNombre1.getText();
+            String poder = hPoder1.getText();
+            String debilidad = hDebilidad1.getText();
+            String tipo = (String) hTipo1.getSelectedItem();
+            Escuadron escuadron = escuadrones.get(Integer.parseInt(hAddIndex1.getText()));
+            int fuerza = Integer.parseInt(hFuerza1.getText());
+            int fisica = Integer.parseInt(hafis1.getText());
+            int mental = Integer.parseInt(hamen1.getText());
             Villano villano = new Villano(nom, poder, debilidad, escuadron, fuerza, fisica, mental, tipo);
             villano.tipaje();
-            escuadrones.get(Integer.parseInt(hAddIndex.getText())).getMiembros().add(villano);
+            escuadrones.get(Integer.parseInt(hAddIndex1.getText())).getMiembros().add(villano);
             villanos.add(villano);
-            hLista.setText(listarHeroe());
-            areaModH.setText(listarHeroe());
-            hElimLista.setText(listarHeroe());
+            hLista1.setText(listarVillano());
+            areaModH1.setText(listarVillano());
+            hElimLista1.setText(listarVillano());
+            hAgregarEs1.setText(listarEscuadron());
     }//GEN-LAST:event_vCrear1MouseClicked
 
-    private void heroeMod1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_heroeMod1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_heroeMod1MouseClicked
+    private void villanoMod1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_villanoMod1MouseClicked
+        jTabbedPane4.setSelectedIndex(0);
+        String nom = hNombre1.getText();
+        String poder = hPoder1.getText();
+        String debilidad = hDebilidad1.getText();
+        String tipo = (String) hTipo1.getSelectedItem();
+        Escuadron escuadron = escuadrones.get(Integer.parseInt(hAddIndex1.getText()));
+        int fuerza = Integer.parseInt(hFuerza1.getText());
+        int fisica = Integer.parseInt(hafis1.getText());
+        int mental = Integer.parseInt(hamen1.getText());
+        Villano villano = new Villano(nom, poder, debilidad, escuadron, fuerza, fisica, mental, tipo);
+        villano.tipaje();
+        if (x == 0) {
+            escuadrones.get(Integer.parseInt(hAddIndex1.getText())).getMiembros().add(villano);
+            villanos.add(villano);
+        } else {
+            int index = Integer.parseInt(IndexModH1.getText());
+            escuadrones.get(Integer.parseInt(hAddIndex1.getText())).getMiembros().set(index, villano);
+            x = 0;
+            villanos.set(index, villano);
+        }
+        hLista1.setText(listarVillano());
+        areaModH1.setText(listarVillano());
+        hElimLista1.setText(listarVillano());
+        hAgregarEs1.setText(listarEscuadron());
+    }//GEN-LAST:event_villanoMod1MouseClicked
 
     private void botonElimH1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonElimH1MouseClicked
-        // TODO add your handling code here:
+        int index = Integer.parseInt(IndexElimH1.getText());
+        villanos.remove(index);
+        hElimLista1.setText(listarVillano());
     }//GEN-LAST:event_botonElimH1MouseClicked
 
     /**
@@ -1200,7 +1227,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField hamen;
     private javax.swing.JTextField hamen1;
     private javax.swing.JButton heroeMod;
-    private javax.swing.JButton heroeMod1;
     private javax.swing.JTextField indexMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1254,5 +1280,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea textListar;
     private javax.swing.JTextArea textMod;
     private javax.swing.JButton vCrear1;
+    private javax.swing.JButton villanoMod1;
     // End of variables declaration//GEN-END:variables
 }
