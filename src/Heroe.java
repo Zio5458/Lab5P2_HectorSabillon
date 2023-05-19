@@ -139,14 +139,14 @@ public class Heroe extends Persona{
     public void tipaje(){
         if ("Normal".equals(tipo)){
         } else if ("Mutante".equals(tipo)){
-            factores = JOptionPane.showInputDialog(this, "Ingrese factor mutante");
+            factores = JOptionPane.showInputDialog(null, "Ingrese factor mutante");
         } else if ("Accidente Radioactivo".equals(tipo)){
-            edad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese edad al momento del accidente"));
-            tipo_accidente = JOptionPane.showInputDialog(this, "Ingrese tipo de accidente");
+            edad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese edad al momento del accidente"));
+            tipo_accidente = JOptionPane.showInputDialog(null, "Ingrese tipo de accidente");
         } else if ("Superhumano".equals(tipo)){
-            superpoder = JOptionPane.showInputDialog(this, "Ingrese superpoder");
+            superpoder = JOptionPane.showInputDialog(null, "Ingrese superpoder");
         } else if ("Extraterrestre".equals(tipo)){
-            String ex = JOptionPane.showInputDialog(this, "[1] Deidad\n[2] Alien");
+            String ex = JOptionPane.showInputDialog(null, "[1] Deidad\n[2] Alien");
             int e = Integer.parseInt(ex);
             switch (e) {
                 case 1:
@@ -170,7 +170,7 @@ public class Heroe extends Persona{
     
     @Override
     public String toString() {
-        return "Heroe:" + super.toString();
+        return super.toString();
     }
     
     

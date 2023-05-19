@@ -8,7 +8,7 @@ public class Escuadron {
     private String lugar;
     private String lider;
     private String tipo;
-    private ArrayList<Persona> miembros;
+    private ArrayList<Persona> miembros = new ArrayList();
 
     
     

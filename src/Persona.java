@@ -89,7 +89,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidad_fisica=" + agilidad_fisica + ", agilidad_mental=" + agilidad_mental + ", tipo=" + tipo + '}';
+        return "Nombre=" + nombre + ", poder=" + poder + ", debilidad=" + debilidad + ", escuadron=" + escuadron + ", fuerza=" + fuerza + ", agilidad_fisica=" + agilidad_fisica + ", agilidad_mental=" + agilidad_mental + ", tipo=" + tipo + '}';
     }
     
     

@@ -15,6 +15,7 @@ public class Main extends javax.swing.JFrame {
 
     static ArrayList<Escuadron> escuadrones = new ArrayList();
     static int o = 0;
+    static int x = 0;
     static int index;
     public Main() {
         initComponents();
@@ -77,7 +78,13 @@ public class Main extends javax.swing.JFrame {
         hCrear = new javax.swing.JButton();
         hTipo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        areaModH = new javax.swing.JTextArea();
+        heroeMod = new javax.swing.JButton();
+        IndexModH = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         Villanos = new javax.swing.JPanel();
 
@@ -452,28 +459,84 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Agregar", jPanel2);
 
+        jPanel8.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel8.setForeground(new java.awt.Color(153, 153, 153));
+
+        areaModH.setColumns(20);
+        areaModH.setRows(5);
+        jScrollPane5.setViewportView(areaModH);
+
+        heroeMod.setText("Modificar");
+        heroeMod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                heroeModMouseClicked(evt);
+            }
+        });
+
+        IndexModH.setText("Index");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(heroeMod, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(IndexModH, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(heroeMod, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(IndexModH))
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Modificar", jPanel3);
+
+        jPanel9.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 848, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 536, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Listar", jPanel6);
@@ -536,6 +599,7 @@ public class Main extends javax.swing.JFrame {
         textListar.setText(listarEscuadron());
         textMod.setText(listarEscuadron());
         textElim.setText(listarEscuadron());
+        hAgregarEs.setText(listarEscuadron());
     }//GEN-LAST:event_esCrearMouseClicked
 
     private void bModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bModMouseClicked
@@ -563,7 +627,14 @@ public class Main extends javax.swing.JFrame {
         int fisica = Integer.parseInt(hafis.getText());
         int mental = Integer.parseInt(hamen.getText());
         Heroe heroe = new Heroe(nom, poder, debilidad, escuadron, fuerza, fisica, mental, tipo);
+        heroe.tipaje();
+        escuadrones.get(Integer.parseInt(hAddIndex.getText())).getMiembros().add(heroe);
+        areaModH.setText(listarHeroe());
     }//GEN-LAST:event_hCrearMouseClicked
+
+    private void heroeModMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_heroeModMouseClicked
+        
+    }//GEN-LAST:event_heroeModMouseClicked
 
     /**
      * @param args the command line arguments
@@ -603,7 +674,19 @@ public class Main extends javax.swing.JFrame {
     public static String listarEscuadron(){
         String t ="";
         for (int i = 0; i < escuadrones.size(); i++){
-            t += escuadrones.get(i);
+            t += i + " <- " + escuadrones.get(i);
+        }
+        return t;
+    }
+    
+    public static String listarHeroe(){
+        String t = "";
+        for (int i = 0; i < escuadrones.size(); i++){
+            for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++){
+                if (escuadrones.get(i).getMiembros().get(j) instanceof Heroe){
+                    t += j + " <- " + escuadrones.get(i).getMiembros().get(j);
+                }                
+            }
         }
         return t;
     }
@@ -613,9 +696,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Eliminar;
     private javax.swing.JPanel Escuadron;
     private javax.swing.JPanel Heroes;
+    private javax.swing.JTextField IndexModH;
     private javax.swing.JPanel Listar;
     private javax.swing.JPanel Modificar;
     private javax.swing.JPanel Villanos;
+    private javax.swing.JTextArea areaModH;
     private javax.swing.JButton bElim;
     private javax.swing.JButton bMod;
     private javax.swing.JTextField eIndex;
@@ -633,6 +718,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> hTipo;
     private javax.swing.JTextField hafis;
     private javax.swing.JTextField hamen;
+    private javax.swing.JButton heroeMod;
     private javax.swing.JTextField indexMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -650,10 +736,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
