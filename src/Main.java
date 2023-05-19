@@ -14,6 +14,8 @@ import javax.swing.ButtonGroup;
 public class Main extends javax.swing.JFrame {
 
     static ArrayList<Escuadron> escuadrones = new ArrayList();
+    static ArrayList<Heroe> heroes = new ArrayList();
+    static ArrayList<Villano> villanos = new ArrayList();
     static int o = 0;
     static int x = 0;
     static int index;
@@ -91,6 +93,8 @@ public class Main extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         hElimLista = new javax.swing.JTextArea();
+        IndexElimH = new javax.swing.JTextField();
+        botonElimH = new javax.swing.JButton();
         Villanos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -562,6 +566,15 @@ public class Main extends javax.swing.JFrame {
         hElimLista.setRows(5);
         jScrollPane7.setViewportView(hElimLista);
 
+        IndexElimH.setText("Index");
+
+        botonElimH.setText("Eliminar");
+        botonElimH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonElimHMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -570,13 +583,26 @@ public class Main extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(botonElimH, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(IndexElimH, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(IndexElimH, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(botonElimH, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -668,6 +694,7 @@ public class Main extends javax.swing.JFrame {
         Heroe heroe = new Heroe(nom, poder, debilidad, escuadron, fuerza, fisica, mental, tipo);
         heroe.tipaje();
         escuadrones.get(Integer.parseInt(hAddIndex.getText())).getMiembros().add(heroe);
+        heroes.add(heroe);
         hLista.setText(listarHeroe());
         areaModH.setText(listarHeroe());
         hElimLista.setText(listarHeroe());
@@ -687,15 +714,22 @@ public class Main extends javax.swing.JFrame {
         heroe.tipaje();
         if (x == 0){
             escuadrones.get(Integer.parseInt(hAddIndex.getText())).getMiembros().add(heroe);
+            heroes.add(heroe);
         } else {
             int index = Integer.parseInt(IndexModH.getText());
             escuadrones.get(Integer.parseInt(hAddIndex.getText())).getMiembros().set(index, heroe);
             x = 0;
+            heroes.set(index, heroe);
         }
         hLista.setText(listarHeroe());
         areaModH.setText(listarHeroe());
         hElimLista.setText(listarHeroe());
     }//GEN-LAST:event_heroeModMouseClicked
+
+    private void botonElimHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonElimHMouseClicked
+        int index = Integer.parseInt(IndexElimH.getText());
+        heroes.remove(index);
+    }//GEN-LAST:event_botonElimHMouseClicked
 
     /**
      * @param args the command line arguments
@@ -735,19 +769,15 @@ public class Main extends javax.swing.JFrame {
     public static String listarEscuadron(){
         String t ="";
         for (int i = 0; i < escuadrones.size(); i++){
-            t += i + " <- " + escuadrones.get(i);
+            t += i + " <- " + escuadrones.get(i) + "\n";
         }
         return t;
     }
     
     public static String listarHeroe(){
         String t = "";
-        for (int i = 0; i < escuadrones.size(); i++){
-            for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++){
-                if (escuadrones.get(i).getMiembros().get(j) instanceof Heroe){
-                    t += j + " <- " + escuadrones.get(i).getMiembros().get(j);
-                }                
-            }
+        for (int i = 0; i < heroes.size(); i++){
+            t += i + " <- " + heroes.get(i) + "\n";
         }
         return t;
     }
@@ -757,6 +787,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Eliminar;
     private javax.swing.JPanel Escuadron;
     private javax.swing.JPanel Heroes;
+    private javax.swing.JTextField IndexElimH;
     private javax.swing.JTextField IndexModH;
     private javax.swing.JPanel Listar;
     private javax.swing.JPanel Modificar;
@@ -764,6 +795,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea areaModH;
     private javax.swing.JButton bElim;
     private javax.swing.JButton bMod;
+    private javax.swing.JButton botonElimH;
     private javax.swing.JTextField eIndex;
     private javax.swing.JButton esCrear;
     private javax.swing.JTextField esLugar;
