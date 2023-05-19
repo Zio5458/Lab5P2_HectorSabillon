@@ -1,15 +1,6 @@
 
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author hdann
- */
 public class Main extends javax.swing.JFrame {
 
     static ArrayList<Escuadron> escuadrones = new ArrayList();
@@ -17,7 +8,6 @@ public class Main extends javax.swing.JFrame {
     static ArrayList<Villano> villanos = new ArrayList();
     static int o = 0;
     static int x = 0;
-    static int z = 0;
     static int index;
 
     public Main() {
