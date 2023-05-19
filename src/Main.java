@@ -56,8 +56,13 @@ public class Main extends javax.swing.JFrame {
         textElim = new javax.swing.JTextArea();
         bElim = new javax.swing.JButton();
         eIndex = new javax.swing.JTextField();
+        Heroes = new javax.swing.JPanel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        Villanos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -295,6 +300,8 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Escuadron", Escuadron);
 
+        jTabbedPane3.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -303,10 +310,10 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 536, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Heroes", jPanel2);
+        jTabbedPane3.addTab("Agregar", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -316,10 +323,62 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Modificar", jPanel3);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 838, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Listar", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 838, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 536, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Eliminar", jPanel7);
+
+        javax.swing.GroupLayout HeroesLayout = new javax.swing.GroupLayout(Heroes);
+        Heroes.setLayout(HeroesLayout);
+        HeroesLayout.setHorizontalGroup(
+            HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane3)
+        );
+        HeroesLayout.setVerticalGroup(
+            HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane3)
+        );
+
+        jTabbedPane1.addTab("Heroes", Heroes);
+
+        javax.swing.GroupLayout VillanosLayout = new javax.swing.GroupLayout(Villanos);
+        Villanos.setLayout(VillanosLayout);
+        VillanosLayout.setHorizontalGroup(
+            VillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 838, Short.MAX_VALUE)
+        );
+        VillanosLayout.setVerticalGroup(
+            VillanosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 567, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Villanos", jPanel3);
+        jTabbedPane1.addTab("Villanos", Villanos);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -404,8 +463,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Agregar;
     private javax.swing.JPanel Eliminar;
     private javax.swing.JPanel Escuadron;
+    private javax.swing.JPanel Heroes;
     private javax.swing.JPanel Listar;
     private javax.swing.JPanel Modificar;
+    private javax.swing.JPanel Villanos;
     private javax.swing.JButton bElim;
     private javax.swing.JButton bMod;
     private javax.swing.JTextField eIndex;
@@ -422,11 +483,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea textElim;
     private javax.swing.JTextArea textListar;
     private javax.swing.JTextArea textMod;
