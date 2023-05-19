@@ -9,6 +9,12 @@ public class Persona {
     protected int agilidad_fisica;
     protected int agilidad_mental;
     protected String tipo;
+    
+    protected int edad;
+    protected String tipo_accidente;
+    protected String factores;
+    protected String superpoder;
+    
 
     public Persona(String nombre, String poder, String debilidad, Escuadron escuadron, int fuerza, int agilidad_fisica, int agilidad_mental) {
         this.nombre = nombre;
